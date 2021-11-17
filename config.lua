@@ -5,6 +5,7 @@ Config.MarkerSize   = {x = 7.0, y = 7.0, z = 1.0}
 
 Config.Money = 500 -- How much it takes from you when you open the clothing menu
 Config.VersionCheck = true
+Config.Debug = true
 
 Config.ClothingShops = {
 	[1] = {

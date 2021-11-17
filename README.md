@@ -11,11 +11,15 @@ ESX Version: https://github.com/ZiggyJoJo/brp-fivem-appearance
 - [cd_drawtextui](https://github.com/dsheedes/cd_drawtextui) (not needed but thats what I used)
 
 ## Setup
-- Delete aj- from the file name
+- Delete / stop from starting `qb-clothing`
+- Delete aj- from the start of the file name
 - Run RunSql.sql
 - Put `setr fivem-appearance:locale "en"` in your server.cfg
+- Put `ensure fivem-appearance` in your server.cfg
+- Follow the code below to replace the events
 
-## Replace `qb-multicharacter:server:getSkin` with
+## Replace the `qb-multicharacter:server:getSkin` callback with:
+#### Line: 151 qb-multicharacter/server/main.lua
 ```lua
 QBCore.Functions.CreateCallback("qb-multicharacter:server:getSkin", function(source, cb, cid)
     local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {cid, 1})
@@ -28,7 +32,8 @@ QBCore.Functions.CreateCallback("qb-multicharacter:server:getSkin", function(sou
     end
 end)
 ```
-## Replace `RegisterNUICallback('cDataPed', function(data)'` with
+## Replace the `RegisterNUICallback('cDataPed', function(data)'` callback  with:
+#### Line: 109 qb-multicharacter/client/main.lua
 ```lua
 RegisterNUICallback('cDataPed', function(data)
     local cData = data.cData  
@@ -93,10 +98,6 @@ RegisterNUICallback('cDataPed', function(data)
     end
 end)
 ```
-## Known Bugs
-
-- Creating a character using the export sometimes will scuff it and make you create a new character on every login
-
 
 ## Preview
 
@@ -104,15 +105,8 @@ end)
 ![Customization Preview](https://i.file.glass/ZcyR746rWk.jpg "Customization Preview")
 ![Customization Preview](https://i.file.glass/cE1Jk0d9Nk.jpg "Customization Preview")
 
-## ConVars
+## Known Bugs
 
-Since this is a client script, you will need to use **setr** to set these convars.
-
-- **fivem-appearance:locale**: the name of one file inside `locales/`, default **en**, choose the locale file for the customization interface.
-
-config.cfg example:
-
-```cfg
-setr fivem-appearance:locale "en"
-ensure fivem-appearance
-```
+- Creating a character using the export sometimes will scuff it and make you create a new character on every login
+- The CreateFirstCharacter event dosent always want to work first try
+- If you find anymore issues please report them on the Github issues page!

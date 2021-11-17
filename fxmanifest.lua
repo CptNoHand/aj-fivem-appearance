@@ -3,8 +3,8 @@ game { "gta5" }
 
 author 'ihyajb#9723'
 description 'A flexible player customization script for FiveM. Made to work with QBCore'
-repository 'https://github.com/pedr0fontoura/fivem-appearance'
-version 'v1.0.0'
+repository 'https://github.com/ihyajb/aj-fivem-appearance'
+version 'v1.3.0'
 
 shared_script 'config.lua'
 
@@ -27,3 +27,5 @@ files {
 }
 
 ui_page 'web/build/index.html'
+
+provide 'qb-clothing'
