@@ -3,7 +3,7 @@ Config = {}
 Config.DrawDistance = 10.0
 Config.MarkerSize   = {x = 7.0, y = 7.0, z = 1.0}
 
-Config.Money = 500 -- How much it takes from you when you open the clothing menu
+Config.Money = 100 -- How much it takes from you when you open the clothing menu
 Config.VersionCheck = true
 Config.Debug = true
 
@@ -89,12 +89,12 @@ Config.ClothingShops = {
 		MarkerSize   = {x = 2.5, y = 2.0, z = 0.0}
 	},
 	[17] = {
-		blip = true,
+		blip = false,
 		coords = vector3(1861.1047363281, 3689.2331542969, 34.276859283447),
 		MarkerSize   = {x = 2.0, y = 2.0, z = 0.0}
 	},
 	[18] = {
-		blip = true,
+		blip = false,
 		coords = vector3(1834.5977783203, 3690.5405273438, 34.270645141602),
 		MarkerSize   = {x = 2.0, y = 2.0, z = 0.0}
 	},
