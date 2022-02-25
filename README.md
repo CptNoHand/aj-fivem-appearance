@@ -8,11 +8,14 @@ ESX Version: https://github.com/ZiggyJoJo/brp-fivem-appearance
 - QBCore
 - [qb-menu](https://github.com/qbcore-framework/qb-menu)
 - [qb-input](https://github.com/qbcore-framework/qb-input)
-- [cd_drawtextui](https://github.com/dsheedes/cd_drawtextui) (not needed but thats what I used)
+- [qb-drawtext](https://github.com/IdrisDose/qb-drawtext) (not needed but thats what I used)
+
+## Tattoos
+- [qb-tattooshop](https://github.com/MrEvilGamer/qb-tattooshop)
 
 ## Setup
 - Delete / stop from starting `qb-clothing`
-- Delete aj- from the start of the file name
+- Delete `aj-` and `-main` from the file name
 - Run RunSql.sql
 - Put `setr fivem-appearance:locale "en"` in your server.cfg
 - Put `ensure fivem-appearance` in your server.cfg
@@ -22,7 +25,7 @@ ESX Version: https://github.com/ZiggyJoJo/brp-fivem-appearance
 #### Line: 151 qb-multicharacter/server/main.lua
 ```lua
 QBCore.Functions.CreateCallback("qb-multicharacter:server:getSkin", function(source, cb, cid)
-    local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {cid, 1})
+    local result = MySQL.query.await('SELECT * FROM players WHERE citizenid = ?', {cid})
     local PlayerData = result[1]
     PlayerData.model = json.decode(PlayerData.skin)
     if PlayerData.skin ~= nil then
@@ -100,13 +103,7 @@ end)
 ```
 
 ## Preview
+### Video-Preveiw: https://streamable.com/1oug2s
 
-![Customization Preview](https://i.file.glass/XjXTIcvSpw.jpg "Customization Preview")
-![Customization Preview](https://i.file.glass/ZcyR746rWk.jpg "Customization Preview")
-![Customization Preview](https://i.file.glass/cE1Jk0d9Nk.jpg "Customization Preview")
-
-## Known Bugs
-
-- Creating a character using the export sometimes will scuff it and make you create a new character on every login
-- The CreateFirstCharacter event dosent always want to work first try
-- If you find anymore issues please report them on the Github issues page!
+![Customization Preview](https://i.imgur.com/X0U7bk6.jpg "Customization Preview")
+![Customization Preview](https://i.imgur.com/ejjmhKu.jpg "Customization Preview")

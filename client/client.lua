@@ -7,6 +7,316 @@ local hasAlreadyEnteredMarker = false
 local allMyOutfits = {}
 local isPurchaseSuccessful = false
 local PlayerData = {}
+local PlayerJob = {}
+local PlayerGang = {}
+
+local skinData = {
+    ["face"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["face2"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["facemix"] = {
+        skinMix = 0,
+        shapeMix = 0,
+        defaultSkinMix = 0.0,
+        defaultShapeMix = 0.0,
+    },
+    ["pants"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["hair"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["eyebrows"] = {
+        item = -1,
+        texture = 1,
+        defaultItem = -1,
+        defaultTexture = 1,
+    },
+    ["beard"] = {
+        item = -1,
+        texture = 1,
+        defaultItem = -1,
+        defaultTexture = 1,
+    },
+    ["blush"] = {
+        item = -1,
+        texture = 1,
+        defaultItem = -1,
+        defaultTexture = 1,
+    },
+    ["lipstick"] = {
+        item = -1,
+        texture = 1,
+        defaultItem = -1,
+        defaultTexture = 1,
+    },
+    ["makeup"] = {
+        item = -1,
+        texture = 1,
+        defaultItem = -1,
+        defaultTexture = 1,
+    },
+    ["ageing"] = {
+        item = -1,
+        texture = 0,
+        defaultItem = -1,
+        defaultTexture = 0,
+    },
+    ["arms"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["t-shirt"] = {
+        item = 1,
+        texture = 0,
+        defaultItem = 1,
+        defaultTexture = 0,
+    },
+    ["torso2"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["vest"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["bag"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["shoes"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 1,
+        defaultTexture = 0,
+    },
+    ["mask"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["hat"] = {
+        item = -1,
+        texture = 0,
+        defaultItem = -1,
+        defaultTexture = 0,
+    },
+    ["glass"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["ear"] = {
+        item = -1,
+        texture = 0,
+        defaultItem = -1,
+        defaultTexture = 0,
+    },
+    ["watch"] = {
+        item = -1,
+        texture = 0,
+        defaultItem = -1,
+        defaultTexture = 0,
+    },
+    ["bracelet"] = {
+        item = -1,
+        texture = 0,
+        defaultItem = -1,
+        defaultTexture = 0,
+    },
+    ["accessory"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["decals"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["eye_color"] = {
+        item = -1,
+        texture = 0,
+        defaultItem = -1,
+        defaultTexture = 0,
+    },
+    ["moles"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = -1,
+        defaultTexture = 0,
+    },
+    ["nose_0"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["nose_1"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["nose_2"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["nose_3"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+
+    ["nose_4"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["nose_5"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["cheek_1"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["cheek_2"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["cheek_3"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["eye_opening"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["lips_thickness"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["jaw_bone_width"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["eyebrown_high"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["eyebrown_forward"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["jaw_bone_back_lenght"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["chimp_bone_lowering"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["chimp_bone_lenght"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["chimp_bone_width"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["chimp_hole"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+    ["neck_thikness"] = {
+        item = 0,
+        texture = 0,
+        defaultItem = 0,
+        defaultTexture = 0,
+    },
+}
+
+local function typeof(var)
+    local _type = type(var);
+    if(_type ~= "table" and _type ~= "userdata") then
+        return _type;
+    end
+    local _meta = getmetatable(var);
+    if(_meta ~= nil and _meta._NAME ~= nil) then
+        return _meta._NAME;
+    else
+        return _type;
+    end
+end
+
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        Wait(200)
+        PlayerData = QBCore.Functions.GetPlayerData()
+		PlayerJob = PlayerData.job
+		PlayerGang = PlayerData.gang
+    end
+end)
 
 -- Net Events
 
@@ -14,6 +324,8 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     QBCore.Functions.TriggerCallback('fivem-appearance:getPlayerSkin', function(appearance)
 		exports['fivem-appearance']:setPlayerAppearance(appearance)
 		PlayerData = QBCore.Functions.GetPlayerData()
+		PlayerJob = PlayerData.job
+		PlayerGang = PlayerData.gang
 		
 		if Config.Debug then  -- This will detect if the player model is set as "player_zero" aka michael. Will then set the character as a freemode ped based on gender.
 			Wait(5000)
@@ -173,10 +485,10 @@ RegisterNetEvent('fivem-appearance:saveOutfit', function()
         submitText = "Create Outfit",
         inputs = {
             {
-                text = "Outfit Name", -- text you want to be displayed as a place holder
-                name = "input", -- name of the input should be unique otherwise it might override
-                type = "text", -- type of the input
-                isRequired = true -- Optional [accepted values: true | false] but will not submit the form if no value is inputted
+                text = "Outfit Name",
+                name = "input",
+                type = "text",
+                isRequired = true
             },
         },
     })
@@ -224,14 +536,8 @@ RegisterNetEvent('fivem-appearance:deleteOutfit', function(id)
 	QBCore.Functions.Notify('Outfit Deleted', 'error')
 end)
 
-RegisterNetEvent("fivem-appearance:purchaseSuccessful")
-AddEventHandler("fivem-appearance:purchaseSuccessful", function()
-    isPurchaseSuccessful = true
-end)
-
-RegisterNetEvent("fivem-appearance:purchaseFailed")
-AddEventHandler("fivem-appearance:purchaseFailed", function()
-    isPurchaseSuccessful = false
+RegisterNetEvent("fivem-appearance:purchase", function(bool)
+    isPurchaseSuccessful = bool
 end)
 
 RegisterNetEvent('fivem-appearance:clothingMenu', function()
@@ -251,8 +557,12 @@ RegisterNetEvent('fivem-appearance:clothingMenu', function()
 			if appearance then
 				TriggerServerEvent('fivem-appearance:save', appearance)
 				print('Player Clothing Saved')
+				Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+				TriggerServerEvent('Select:Tattoos')
 			else
 				print('Canceled')
+				Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+				TriggerServerEvent('Select:Tattoos')
 			end
 		end, config)
 	end
@@ -272,8 +582,12 @@ RegisterNetEvent('fivem-appearance:barberMenu', function()
 		if appearance then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			print('Player Clothing Saved')
+			Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+			TriggerServerEvent('Select:Tattoos')
 		else
 			print('Canceled')
+			Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+			TriggerServerEvent('Select:Tattoos')
 		end
 	end, config)
 end)
@@ -295,8 +609,12 @@ RegisterNetEvent('qb-clothing:client:openMenu', function()  -- Admin Menu clothi
 		if appearance then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			print('Player Clothing Saved')
+			Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+			TriggerServerEvent('Select:Tattoos')
 		else
 			print('Canceled')
+			Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+			TriggerServerEvent('Select:Tattoos')
 		end
 	end, config)
 end)
@@ -339,6 +657,80 @@ RegisterNetEvent('qb-clothing:client:openOutfitMenu', function()  -- Name is so 
     })
 end)
 
+RegisterNetEvent('qb-clothing:client:openWorkOutfits', function(datawork)  -- Name is so that you dont have to replace the event, Used in Appartments, Bossmenu, etc...
+	exports['qb-menu']:openMenu({
+        {
+            header = "👔 | Outfit Options",
+            isMenuHeader = true,
+        },
+		{
+            header = "Civilian Outfit",
+			txt = "Put on your clothes",
+            params = {
+                event = "fivem-appearance:reloadskin",
+            }
+        },
+		{
+            header = "Work Clothes",
+			txt = "Pick from any of your work outfits",
+            params = {
+                event = "qb-clothes:pickWorkOutfitApp",
+                args = datawork,
+            }
+        },
+    })
+end)
+
+RegisterNetEvent('qb-clothes:pickWorkOutfitApp', function(datawork)
+	Wait(150)
+	local outfitDefMenu = {
+        {
+            header = '< Go Back',
+            params = {
+                event = 'qb-clothing:client:openWorkOutfits',
+				args = datawork
+            }
+        }
+    }
+    for k, v in pairs(datawork) do
+        outfitDefMenu[#outfitDefMenu + 1] = {
+            header = v.outfitLabel,
+            params = {
+                event = 'qb-clothing:client:loadWorkOutfit',
+                args = { oData = v, vData = datawork }
+            }
+        }
+    end
+    exports['qb-menu']:openMenu(outfitDefMenu)
+end)
+
+RegisterNetEvent('qb-clothes:pickWorkOutfit', function(datawork)
+	TriggerEvent('qb-clothes:getOutfits')
+	Wait(150)
+	local outfitMenu = {
+        {
+            header = '< Go Back',
+            params = {
+                event = 'qb-clothing:client:openWorkOutfits',
+				args = datawork
+            }
+        }
+    }
+    for i=1, #allMyOutfits, 1 do
+        outfitMenu[#outfitMenu + 1] = {
+            header = allMyOutfits[i].name,
+            params = {
+                event = 'qb-clothes:setOutfit',
+                args = {
+					ped = allMyOutfits[i].pedModel, 
+					components = allMyOutfits[i].pedComponents, 
+					props = allMyOutfits[i].pedProps
+				}
+            }
+        }
+    end
+    exports['qb-menu']:openMenu(outfitMenu)
+end)
 
 RegisterNetEvent('fivem-appearance:pickNewOutfitApp', function(data)
     local id = data.id
@@ -394,6 +786,281 @@ RegisterNetEvent('fivem-appearance:deleteOutfitMenuApp', function(data)
         }
     end
     exports['qb-menu']:openMenu(DeleteMenu)
+end)
+
+RegisterNetEvent('qb-clothing:client:loadOutfit', function(oData)
+    local ped = PlayerPedId()
+
+    data = oData.outfitData
+
+    if typeof(data) ~= "table" then data = json.decode(data) end
+
+    for k, v in pairs(data) do
+        skinData[k].item = data[k].item
+        skinData[k].texture = data[k].texture
+    end
+
+    -- Pants
+    if data["pants"] ~= nil then
+        SetPedComponentVariation(ped, 4, data["pants"].item, data["pants"].texture, 0)
+    end
+
+    -- Arms
+    if data["arms"] ~= nil then
+        SetPedComponentVariation(ped, 3, data["arms"].item, data["arms"].texture, 0)
+    end
+
+    -- T-Shirt
+    if data["t-shirt"] ~= nil then
+        SetPedComponentVariation(ped, 8, data["t-shirt"].item, data["t-shirt"].texture, 0)
+    end
+
+    -- Vest
+    if data["vest"] ~= nil then
+        SetPedComponentVariation(ped, 9, data["vest"].item, data["vest"].texture, 0)
+    end
+
+    -- Torso 2
+    if data["torso2"] ~= nil then
+        SetPedComponentVariation(ped, 11, data["torso2"].item, data["torso2"].texture, 0)
+    end
+
+    -- Shoes
+    if data["shoes"] ~= nil then
+        SetPedComponentVariation(ped, 6, data["shoes"].item, data["shoes"].texture, 0)
+    end
+
+    -- Bag
+    if data["bag"] ~= nil then
+        SetPedComponentVariation(ped, 5, data["bag"].item, data["bag"].texture, 0)
+    end
+
+    -- Badge
+    if data["badge"] ~= nil then
+        SetPedComponentVariation(ped, 10, data["decals"].item, data["decals"].texture, 0)
+    end
+
+    -- Accessory
+    if data["accessory"] ~= nil then
+        if QBCore.Functions.GetPlayerData().metadata["tracker"] then
+            SetPedComponentVariation(ped, 7, 13, 0, 0)
+        else
+            SetPedComponentVariation(ped, 7, data["accessory"].item, data["accessory"].texture, 0)
+        end
+    else
+        if QBCore.Functions.GetPlayerData().metadata["tracker"] then
+            SetPedComponentVariation(ped, 7, 13, 0, 0)
+        else
+            SetPedComponentVariation(ped, 7, -1, 0, 2)
+        end
+    end
+
+    -- Mask
+    if data["mask"] ~= nil then
+        SetPedComponentVariation(ped, 1, data["mask"].item, data["mask"].texture, 0)
+    end
+
+    -- Bag
+    if data["bag"] ~= nil then
+        SetPedComponentVariation(ped, 5, data["bag"].item, data["bag"].texture, 0)
+    end
+
+    -- Hat
+    if data["hat"] ~= nil then
+        if data["hat"].item ~= -1 and data["hat"].item ~= 0 then
+            SetPedPropIndex(ped, 0, data["hat"].item, data["hat"].texture, true)
+        else
+            ClearPedProp(ped, 0)
+        end
+    end
+
+    -- Glass
+    if data["glass"] ~= nil then
+        if data["glass"].item ~= -1 and data["glass"].item ~= 0 then
+            SetPedPropIndex(ped, 1, data["glass"].item, data["glass"].texture, true)
+        else
+            ClearPedProp(ped, 1)
+        end
+    end
+
+    -- Ear
+    if data["ear"] ~= nil then
+        if data["ear"].item ~= -1 and data["ear"].item ~= 0 then
+            SetPedPropIndex(ped, 2, data["ear"].item, data["ear"].texture, true)
+        else
+            ClearPedProp(ped, 2)
+        end
+    end
+end)
+
+RegisterNetEvent('qb-clothing:client:loadWorkOutfit', function(oData)
+    local ped = PlayerPedId()
+	local oData = oData.oData
+    data = oData.outfitData
+
+    if typeof(data) ~= "table" then data = json.decode(data) end
+
+    for k, v in pairs(data) do
+        skinData[k].item = data[k].item
+        skinData[k].texture = data[k].texture
+    end
+
+    -- Pants
+    if data["pants"] ~= nil then
+        SetPedComponentVariation(ped, 4, data["pants"].item, data["pants"].texture, 0)
+    end
+
+    -- Arms
+    if data["arms"] ~= nil then
+        SetPedComponentVariation(ped, 3, data["arms"].item, data["arms"].texture, 0)
+    end
+
+    -- T-Shirt
+    if data["t-shirt"] ~= nil then
+        SetPedComponentVariation(ped, 8, data["t-shirt"].item, data["t-shirt"].texture, 0)
+    end
+
+    -- Vest
+    if data["vest"] ~= nil then
+        SetPedComponentVariation(ped, 9, data["vest"].item, data["vest"].texture, 0)
+    end
+
+    -- Torso 2
+    if data["torso2"] ~= nil then
+        SetPedComponentVariation(ped, 11, data["torso2"].item, data["torso2"].texture, 0)
+    end
+
+    -- Shoes
+    if data["shoes"] ~= nil then
+        SetPedComponentVariation(ped, 6, data["shoes"].item, data["shoes"].texture, 0)
+    end
+
+    -- Bag
+    if data["bag"] ~= nil then
+        SetPedComponentVariation(ped, 5, data["bag"].item, data["bag"].texture, 0)
+    end
+
+    -- Badge
+    if data["badge"] ~= nil then
+        SetPedComponentVariation(ped, 10, data["decals"].item, data["decals"].texture, 0)
+    end
+
+    -- Accessory
+    if data["accessory"] ~= nil then
+        if QBCore.Functions.GetPlayerData().metadata["tracker"] then
+            SetPedComponentVariation(ped, 7, 13, 0, 0)
+        else
+            SetPedComponentVariation(ped, 7, data["accessory"].item, data["accessory"].texture, 0)
+        end
+    else
+        if QBCore.Functions.GetPlayerData().metadata["tracker"] then
+            SetPedComponentVariation(ped, 7, 13, 0, 0)
+        else
+            SetPedComponentVariation(ped, 7, -1, 0, 2)
+        end
+    end
+
+    -- Mask
+    if data["mask"] ~= nil then
+        SetPedComponentVariation(ped, 1, data["mask"].item, data["mask"].texture, 0)
+    end
+
+    -- Bag
+    if data["bag"] ~= nil then
+        SetPedComponentVariation(ped, 5, data["bag"].item, data["bag"].texture, 0)
+    end
+
+    -- Hat
+    if data["hat"] ~= nil then
+        if data["hat"].item ~= -1 and data["hat"].item ~= 0 then
+            SetPedPropIndex(ped, 0, data["hat"].item, data["hat"].texture, true)
+        else
+            ClearPedProp(ped, 0)
+        end
+    end
+
+    -- Glass
+    if data["glass"] ~= nil then
+        if data["glass"].item ~= -1 and data["glass"].item ~= 0 then
+            SetPedPropIndex(ped, 1, data["glass"].item, data["glass"].texture, true)
+        else
+            ClearPedProp(ped, 1)
+        end
+    end
+
+    -- Ear
+    if data["ear"] ~= nil then
+        if data["ear"].item ~= -1 and data["ear"].item ~= 0 then
+            SetPedPropIndex(ped, 2, data["ear"].item, data["ear"].texture, true)
+        else
+            ClearPedProp(ped, 2)
+        end
+    end
+	TriggerEvent("qb-clothes:pickWorkOutfitApp", oData.vData)
+end)
+
+RegisterNetEvent('QBCore:Client:OnJobUpdate')
+AddEventHandler('QBCore:Client:OnJobUpdate', function(JobInfo)
+    PlayerData.job = JobInfo
+end)
+
+local function DrawText3Ds(x, y, z, text)
+	SetTextScale(0.35, 0.35)
+    SetTextFont(4)
+    SetTextProportional(1)
+    SetTextColour(255, 255, 255, 215)
+    SetTextEntry("STRING")
+    SetTextCentre(true)
+    AddTextComponentString(text)
+    SetDrawOrigin(x,y,z, 0)
+    DrawText(0.0, 0.0)
+    local factor = (string.len(text)) / 370
+    DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
+    ClearDrawOrigin()
+end
+
+-- ClothingRooms from qb-clothing
+
+CreateThread(function()
+    while true do
+        if LocalPlayer.state.isLoggedIn then
+            local ped = PlayerPedId()
+            local pos = GetEntityCoords(ped)
+            local inRange = false
+            for k, v in pairs(Config.ClothingRooms) do
+                local dist = #(pos - Config.ClothingRooms[k].coords)
+                if dist < 15 then
+                    if not creatingCharacter then
+                        DrawMarker(2, Config.ClothingRooms[k].coords, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.4, 0.2, 255, 255, 255, 255, 0, 0, 0, 1, 0, 0, 0)
+                        if dist < 2 then
+                            if PlayerJob.name == Config.ClothingRooms[k].requiredJob then
+                                DrawText3Ds(Config.ClothingRooms[k].coords.x, Config.ClothingRooms[k].coords.y, Config.ClothingRooms[k].coords.z + 0.3, '[~g~E~w~] - Job Clothing')
+                                if IsControlJustPressed(0, 38) then -- E
+                                    gender = "male"
+                                    if QBCore.Functions.GetPlayerData().charinfo.gender == 1 then gender = "female" end
+									TriggerEvent("qb-clothing:client:openWorkOutfits", Config.Outfits[PlayerJob.name][gender])
+                                end
+                            else
+                                if PlayerGang.name == Config.ClothingRooms[k].requiredJob then
+                                    DrawText3Ds(Config.ClothingRooms[k].coords.x, Config.ClothingRooms[k].coords.y, Config.ClothingRooms[k].coords.z + 0.3, '[~g~E~w~] - Gang Clothing')
+                                    if IsControlJustPressed(0, 38) then -- E
+                                        gender = "male"
+                                        if QBCore.Functions.GetPlayerData().charinfo.gender == 1 then gender = "female" end
+										TriggerEvent("qb-clothing:client:openWorkOutfits", Config.Outfits[PlayerGang.name][gender])
+                                    end
+                                end
+                            end
+                        end
+                        inRange = true
+                    end
+                end
+            end
+            if not inRange then
+                Wait(2000)
+            end
+        end
+        Wait(5)
+    end
 end)
 
 -- Theads
@@ -481,20 +1148,20 @@ CreateThread(function()
 		if (isInClothingShop and not hasAlreadyEnteredMarker) or (isInClothingShop and LastZone ~= currentZone) then
 			hasAlreadyEnteredMarker, LastZone = true, currentZone
 			CurrentAction     = 'clothingMenu'
-			TriggerEvent('cd_drawtextui:ShowUI', 'show', '[E] Clothing Menu')	
+			exports['qb-drawtext']:DrawText('[E] Clothing Menu','left')
 		end
 
 		if (isInBarberShop and not hasAlreadyEnteredMarker) or (isInBarberShop and LastZone ~= currentZone) then
 			hasAlreadyEnteredMarker, LastZone = true, currentZone
 			CurrentAction     = 'barberMenu'
-			TriggerEvent('cd_drawtextui:ShowUI', 'show', '[E] Barber Menu')	
+			exports['qb-drawtext']:DrawText('[E] Barber Menu','left')
 		end
 
 		if not isInClothingShop and not isInBarberShop and hasAlreadyEnteredMarker then
 			hasAlreadyEnteredMarker = false
 			sleep = 1000
 			TriggerEvent('fivem-appearance:hasExitedMarker', LastZone)
-			TriggerEvent('cd_drawtextui:HideUI')
+			exports['qb-drawtext']:HideText()
 		end
 		Wait(sleep)
 	end
@@ -503,8 +1170,17 @@ end)
 -- Command(s)
 
 RegisterCommand('reloadskin', function()
+	TriggerEvent("fivem-appearance:reloadskin")
+end)
+
+RegisterNetEvent('fivem-appearance:reloadskin', function(data)
+    local playerPed = PlayerPedId()
+	local maxhealth = GetEntityMaxHealth(playerPed)
+	local health = GetEntityHealth(playerPed)
 	QBCore.Functions.TriggerCallback('fivem-appearance:getPlayerSkin', function(appearance)
 		exports['fivem-appearance']:setPlayerAppearance(appearance)
+        Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+			TriggerServerEvent('Select:Tattoos')
 	end)
 	for k, v in pairs(GetGamePool('CObject')) do
         if IsEntityAttachedToEntity(PlayerPedId(), v) then
@@ -512,6 +1188,9 @@ RegisterCommand('reloadskin', function()
             DeleteObject(v)
             DeleteEntity(v)
         end
+		SetPedMaxHealth(PlayerId(), maxhealth)
+		Citizen.Wait(1000) -- Safety Delay
+		SetEntityHealth(PlayerPedId(), health)
     end
 end)
 
@@ -530,8 +1209,12 @@ RegisterCommand('clothingmenu', function()
 		if (appearance) then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			print('Player Clothing Saved')
+			Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+			TriggerServerEvent('Select:Tattoos')
 		else
 			print('Canceled')
+			Wait(1000) -- Wait is needed to clothing menu dosent overwrite the tattoos
+			TriggerServerEvent('Select:Tattoos')
 		end
 	end, config)
 end, false)

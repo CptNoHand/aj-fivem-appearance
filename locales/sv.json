@@ -1,0 +1,127 @@
+{
+  "modal": {
+    "save": {
+      "title": "Spara anpassning",
+      "description": "Du kommer att förbli ful"
+    },
+    "exit": {
+      "title": "Avsluta anpassning",
+      "description": "Inga ändringar kommer att sparas"
+    },
+    "accept": "Ja",
+    "decline": "Nej"
+  },
+  "ped": {
+    "title": "Ped",
+    "model": "Modell"
+  },
+  "headBlend": {
+    "title": "Föräldrar",
+    "shape": {
+      "title": "Ansikte",
+      "firstOption": "Far",
+      "secondOption": "Mor",
+      "mix": "Blanda"
+    },
+    "skin": {
+      "title": "Hud",
+      "firstOption": "Far",
+      "secondOption": "Mor",
+      "mix": "Blanda"
+    }
+  },
+  "faceFeatures": {
+    "title": "Ansiktsdrag",
+    "nose": {
+      "title": "Näsa",
+      "width": "Bredd",
+      "height": "Höjd",
+      "size": "Storlek",
+      "boneHeight": "Benhöjd",
+      "boneTwist": "Benvridning",
+      "peakHeight": "Topphöjd"
+    },
+    "eyebrows": {
+      "title": "Ögonbryn",
+      "height": "Höjd",
+      "depth": "Djup"
+    },
+    "cheeks": {
+      "title": "Kinder",
+      "boneHeight": "Benhöjd",
+      "boneWidth": "Benbredd",
+      "width": "Bredd"
+    },
+    "eyesAndMouth": {
+      "title": "Ögon och mun",
+      "eyesOpening": "Ögonstorlek",
+      "lipsThickness": "Läpptjocklek"
+    },
+    "jaw": {
+      "title": "Käke",
+      "width": "Bredd",
+      "size": "Storlek"
+    },
+    "chin": {
+      "title": "Haka",
+      "lowering": "Sänkning",
+      "length": "Längd",
+      "size": "Storlek",
+      "hole": "Hålstorlek"
+    },
+    "neck": {
+      "title": "Nacke",
+      "thickness": "Tjocklek"
+    }
+  },
+  "headOverlays": {
+    "title": "Utseende",
+    "hair": {
+      "title": "Hår",
+      "style": "Stil",
+      "color": "Färg",
+      "highlight": "Highlight"
+    },
+    "opacity": "Opacitet",
+    "style": "Stil",
+    "color": "Färg",
+    "blemishes": "Finnar",
+    "beard": "Skägg",
+    "eyebrows": "Ögonbryn",
+    "ageing": "Åldrande",
+    "makeUp": "Smink",
+    "blush": "Blush",
+    "complexion": "Hy",
+    "sunDamage": "Solskada",
+    "lipstick": "Läppstift",
+    "moleAndFreckles": "Fräknar",
+    "chestHair": "Brösthår",
+    "bodyBlemishes": "Kropssprickar",
+    "eyeColor": "Ögonfärg"
+  },
+  "components": {
+    "title": "Kläder",
+    "drawable": "Plagg",
+    "texture": "Mönster",
+    "mask": "Mask",
+    "upperBody": "Armar",
+    "lowerBody": "Byxor",
+    "bags": "Väskor och fallskärm",
+    "shoes": "Skor",
+    "scarfAndChains": "Scarfs och halsband",
+    "shirt": "Tröjor",
+    "bodyArmor": "Skyddsvästar",
+    "decals": "Dekaler",
+    "jackets": "Jackor"
+  },
+  "props": {
+    "title": "Accessoarer",
+    "drawable": "Plagg",
+    "texture": "Mönster",
+    "hats": "Hattar och hjälmar",
+    "glasses": "Glasögon",
+    "ear": "Örhängen",
+    "watches": "Klockor",
+    "bracelets": "Armband"
+  }
+}
